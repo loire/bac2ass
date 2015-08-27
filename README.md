@@ -7,13 +7,13 @@ One step pipeline to clean, filter and assemble short reads into a contiguous ba
 Requirement: 
 - SGE cluster
 - python 2.xx
-- [seqtk](https://github.com/lh3/seqtk) (cleaning bases and adapters)
-- [bwa mem](https://github.com/lh3/bwa) (to map reads on vector contaminents)
-- [SPAdes](http://bioinf.spbau.ru/spades) (assembler)
+- seqtk (cleaning bases and adapters)
+- bwa mem (to map reads on vector contaminents)
+- SPAdes (assembler)
 
 ## Input: 
-Two pair end fastq file (can be gz compressed) 
-A fasta file with the vector and possible contaminent sequences
+- Two paired fastq file (can be gz compressed) 
+- A fasta file with the vector and possible contaminent sequences
 
 ## Usage:
 ```bash
