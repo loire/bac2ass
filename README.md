@@ -4,12 +4,20 @@ Create assembly from BAC short read sequences
 ## Purpose: 
 One step pipeline to clean, filter and assemble short reads into a contiguous bac sequence. 
    
-Requirement: 
+## Requirement: 
 - SGE cluster
 - python 2.xx
 - seqtk (cleaning bases and adapters)
 - bwa mem (to map reads on vector contaminents)
 - SPAdes (assembler)
+
+
+## TODO (yes, you !)
+
+One needs to edit back2ass.sh in order to edit path of the different dependencies. 
+So far, the script assumes that you are a CBGP cluster user at INRA, so path are good for you. 
+Otherwise, well, change them :)
+
 
 ## Input: 
 - Two paired fastq file (can be gz compressed) 
