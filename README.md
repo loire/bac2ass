@@ -17,8 +17,10 @@ Requirement:
 
 ## Usage:
 ```bash
-qsub back2ass.sh Forward.fastq Reverse.fastq vector.fasta quality
+qsub back2ass.sh Forward.fastq Reverse.fastq vector.fasta qual
 ```
+see intput to make a guess on fastq and fasta origin. 
+qual is a floating number use as a threshold when cleaning fastq files for bases accuracy (ex 0.01). see seqtk manual for additional informations.  
 
 ## Output:
 - Various intermediary files in a tmp directory
