@@ -1,4 +1,4 @@
-# back2ass
+# bac2ass
 Create assembly from BAC short read sequences
 
 ## Purpose: 
