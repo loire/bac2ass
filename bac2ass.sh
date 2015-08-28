@@ -1,8 +1,7 @@
 #!/bin/bash
-#$ -pe SMP 8
 #$ -S /bin/bash
 #$ -cwd
-#$ -q mp.q 
+#$ -q short.q
 #$ -V
 
 #set -xv
@@ -56,12 +55,12 @@ mkdir -p mapVectorCont
 echo "Filtering of Vector and contaminents in reads"
 
 echo ./indexVector_Cont/$(basename $3)
-/home/bin/bwa/last/x64/bwa mem -M -t 8 ./indexVector_Cont/$(basename $3)  ./tmp/${base}_q$4_R1.fastq > ./mapVectorCont/tmp_1.sam
+/home/bin/bwa/last/x64/bwa mem -M -t 1 ./indexVector_Cont/$(basename $3)  ./tmp/${base}_q$4_R1.fastq > ./mapVectorCont/tmp_1.sam
 samtools view -bS ./mapVectorCont/tmp_1.sam > ./mapVectorCont/tmp_1.bam
 samtools sort -n ./mapVectorCont/tmp_1.bam ./mapVectorCont/tmp_1.sorted
 samtools view ./mapVectorCont/tmp_1.sorted.bam >  ./mapVectorCont/${base}.paired_1.sam 
 rm tmp_1.*
-/home/bin/bwa/last/x64/bwa mem -M -t 8 ./indexVector_Cont/$(basename $3)  ./tmp/${base}_q$4_R2.fastq > ./mapVectorCont/tmp_2.sam
+/home/bin/bwa/last/x64/bwa mem -M -t 1 ./indexVector_Cont/$(basename $3)  ./tmp/${base}_q$4_R2.fastq > ./mapVectorCont/tmp_2.sam
 samtools view -bS ./mapVectorCont/tmp_2.sam > ./mapVectorCont/tmp_2.bam
 samtools sort -n ./mapVectorCont/tmp_2.bam ./mapVectorCont/tmp_2.sorted
 samtools view ./mapVectorCont/tmp_2.sorted.bam >  ./mapVectorCont/${base}.paired_2.sam 
@@ -81,7 +80,7 @@ rm tmp_2.*
 # Most probable scaffold can be found by filtering the scaffolds.fasta file by length +  coverage
 
 
-/home/bin/SPAdes/3.5.0/x64/bin/spades.py -t 8 -k 21,33,55,77,99,127 --careful -1 ./mapVectorCont/${base}.paired_1.vector_filtered.fastq -2 ./mapVectorCont/${base}.paired_1.vector_filtered.fastq -o ${base}_assembly
+/home/bin/SPAdes/3.5.0/x64/bin/spades.py -t 1 -k 21,33,55,77,99,127 --careful -1 ./mapVectorCont/${base}.paired_1.vector_filtered.fastq -2 ./mapVectorCont/${base}.paired_2.vector_filtered.fastq -o ${base}_assembly
 
 # Now try to extract most probable scaffolds from results
 
