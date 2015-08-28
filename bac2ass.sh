@@ -60,12 +60,12 @@ echo ./indexVector_Cont/$(basename $3)
 samtools view -bS ./mapVectorCont/tmp_1.sam > ./mapVectorCont/tmp_1.bam
 samtools sort -n ./mapVectorCont/tmp_1.bam ./mapVectorCont/tmp_1.sorted
 samtools view ./mapVectorCont/tmp_1.sorted.bam >  ./mapVectorCont/${base}.paired_1.sam 
-rm tmp_1.*
+rm ./mapVectorCont/tmp_1.*
 /home/bin/bwa/last/x64/bwa mem -M -t 8 ./indexVector_Cont/$(basename $3)  ./tmp/${base}_q$4_R2.fastq > ./mapVectorCont/tmp_2.sam
 samtools view -bS ./mapVectorCont/tmp_2.sam > ./mapVectorCont/tmp_2.bam
 samtools sort -n ./mapVectorCont/tmp_2.bam ./mapVectorCont/tmp_2.sorted
 samtools view ./mapVectorCont/tmp_2.sorted.bam >  ./mapVectorCont/${base}.paired_2.sam 
-rm tmp_2.*
+rm ./mapVectorCont/tmp_2.*
 #
 ## Same with frag reads produced by flash, but without the useless sorting.
 #
