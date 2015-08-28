@@ -81,7 +81,7 @@ rm tmp_2.*
 # Most probable scaffold can be found by filtering the scaffolds.fasta file by length +  coverage
 
 
-/home/bin/SPAdes/3.5.0/x64/bin/spades.py -t 8 -k 21,33,55,77,99,127 --careful -1 ./mapVectorCont/${base}.paired_1.vector_filtered.fastq ./mapVectorCont/${base}.paired_1.vector_filtered.fastq -o ${base}_assembly
+/home/bin/SPAdes/3.5.0/x64/bin/spades.py -t 8 -k 21,33,55,77,99,127 --careful -1 ./mapVectorCont/${base}.paired_1.vector_filtered.fastq -2 ./mapVectorCont/${base}.paired_1.vector_filtered.fastq -o ${base}_assembly
 
 # Now try to extract most probable scaffolds from results
 
