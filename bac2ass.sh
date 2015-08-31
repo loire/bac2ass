@@ -76,13 +76,19 @@ rm ./mapVectorCont/${base}_tmp_2.*
 ./Scripts/extract_BAC_reads.py ./mapVectorCont/${base}.paired_2.sam  
 
 
+# use normandeau scripts to pair fastq files together again (will include in my own scripts at some point
+
+./Scripts/fastqCombinePairedEnd.py ./mapVectorCont/${base}.paired_1.vector_filtered.fastq  ./mapVectorCont/${base}.paired_1.vector_filtered.fastq 
+mkdir -p Cleaned_reads
+mv .mapVectorCont/${base}.paired_1.vector_filtered.fastq_pairs_R1.fastq Cleaned_reads/${base}_final_clean_R1.fastq
+mv .mapVectorCont/${base}.paired_2.vector_filtered.fastq_pairs_R2.fastq Cleaned_reads/${base}_final_clean_R2.fastq
+
+
 # Finally launch spades assembler on clean fastq. Results are stored in a dedicated directory. 
 # Most probable scaffold can be found by filtering the scaffolds.fasta file by length +  coverage
 
+/home/bin/SPAdes/3.5.0/x64/bin/spades.py -t 8 -k 21,33,55,77,99,127 --careful -1 Cleaned_reads/${base}_final_clean_R1.fastq -2 Cleaned_reads/${base}_final_clean_R2.fastq -o ${base}_assembly
 
-/home/bin/SPAdes/3.5.0/x64/bin/spades.py -t 1 -k 21,33,55,77,99,127 --careful -1 ./mapVectorCont/${base}.paired_1.vector_filtered.fastq -2 ./mapVectorCont/${base}.paired_2.vector_filtered.fastq -o ${base}_assembly
-
-# Now try to extract most probable scaffolds from results
 
 
 
