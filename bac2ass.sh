@@ -78,7 +78,7 @@ rm ./mapVectorCont/${base}_tmp_2.*
 
 # use normandeau scripts to pair fastq files together again (will include in my own scripts at some point
 
-./Scripts/fastqCombinePairedEnd.py ./mapVectorCont/${base}.paired_1.vector_filtered.fastq  ./mapVectorCont/${base}.paired_1.vector_filtered.fastq 
+./Scripts/fastqCombinePairedEnd.py ./mapVectorCont/${base}.paired_1.vector_filtered.fastq  ./mapVectorCont/${base}.paired_2.vector_filtered.fastq 
 mkdir -p Cleaned_reads
 mv ./mapVectorCont/${base}.paired_1.vector_filtered.fastq_pairs_R1.fastq Cleaned_reads/${base}_final_clean_R1.fastq
 mv ./mapVectorCont/${base}.paired_2.vector_filtered.fastq_pairs_R2.fastq Cleaned_reads/${base}_final_clean_R2.fastq
