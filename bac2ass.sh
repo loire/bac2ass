@@ -73,8 +73,8 @@ rm ./mapVectorCont/${base}_tmp_2.*
 #
 # Now use bwa results to remove vector sequences and output new reads with my own script
 
-./Scripts/extract_BAC_reads.py ./mapVectorCont/${base}.paired_1.sam  
-./Scripts/extract_BAC_reads.py ./mapVectorCont/${base}.paired_2.sam  
+./Scripts/extract_BAC_reads.py ./mapVectorCont/${base}.paired_1.sam  1
+./Scripts/extract_BAC_reads.py ./mapVectorCont/${base}.paired_2.sam  2
 
 # Repair paired end reads after cleaning: 
 
